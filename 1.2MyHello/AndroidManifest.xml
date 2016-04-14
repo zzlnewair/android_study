@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 该文件是整个应用程序的配置文件，应用程序当中各个组件都需要在这个文件当中进行注册和配置 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.zzl.activity"
+      android:versionCode="1"
+      android:versionName="1.0">
+	   <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+		
+<!-- application标签的主要是配置整个应用程序的基本信息，包括程序的所使用的图标和应用程序的名字。当然，这些值都是引用自R.java文件当中的ID -->
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    	<!-- activity标签用来配置Activity的基本属性，包括Activity的名字和标签-->
+        <activity android:name=".MyHello"
+                  android:label="@string/app_name">
+            <!-- 以下的四行代码是配置该Activity是整个应用程序启动时运行的第一个Activity -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+
+</manifest> 
