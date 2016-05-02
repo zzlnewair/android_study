@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/textviewll"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<EditText  
+  	  android:id="@+id/sample_edit_text0"    
+      android:layout_width="fill_parent"   
+   	  android:layout_height="wrap_content" 
+     
+      android:hint="简单的EditText输入框"
+      
+      /> 
+    <Button 
+      android:id="@+id/sample_button0"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:text="确定"/>
+</LinearLayout>

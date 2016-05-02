@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content" 
+			  android:textColor="#000000"
+			  android:textSize="18dip"
+			  android:background="#00FF00"
+		      android:text="单项选择测试第一组" 
+		      android:gravity="center_vertical|center_horizontal"
+		      />
+    <RadioGroup
+              android:id="@+id/radion0"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content" >
+    <RadioButton
+   			  android:id="@+id/radionButton0"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item0" 
+    />
+     <RadioButton
+   			  android:id="@+id/radionButton1"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item1" 
+    />   
+     <RadioButton
+   			  android:id="@+id/radionButton2"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item2" 
+    />   
+    </RadioGroup>
+
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content" 
+			  android:textColor="#000000"
+			  android:textSize="18dip"
+			  android:background="#00FF00"
+		      android:text="单项选择测试第二组" 
+		      android:gravity="center_vertical|center_horizontal"
+		      />
+    <RadioGroup
+              android:id="@+id/radion1"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content" >
+    <RadioButton
+   			  android:id="@+id/radionButton3"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item3" 
+    />
+     <RadioButton
+   			  android:id="@+id/radionButton4"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item4" 
+    />   
+     <RadioButton
+   			  android:id="@+id/radionButton5"
+ 			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:text="item5" 
+    />   
+    </RadioGroup>    
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, aontrolActivity!</string>
+    <string name="app_name">系统控件的简单使用教程</string>
+    <string name="textView">从xml配置文件中设置TextView</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content" 
+			  android:textColor="#000000"
+			  android:textSize="18dip"
+			  android:background="#00FF00"
+		      android:text="多项选择测试" 
+		      android:gravity="center_vertical|center_horizontal"
+		      />
+      <CheckBox
+    		 android:id="@+id/checkboxview0"
+     	     android:layout_width="fill_parent"
+			 android:layout_height="wrap_content" 
+     		 android:text="item0"
+     		 />   
+      <CheckBox
+    		 android:id="@+id/checkboxview1"
+     	     android:layout_width="fill_parent"
+			 android:layout_height="wrap_content" 
+     		 android:text="item1"
+     		 /> 
+      <CheckBox
+    		 android:id="@+id/checkboxview2"
+     	     android:layout_width="fill_parent"
+			 android:layout_height="wrap_content" 
+     		 android:text="item2"
+     		 /> 
+      <CheckBox
+    		 android:id="@+id/checkboxview3"
+     	     android:layout_width="fill_parent"
+			 android:layout_height="wrap_content" 
+     		 android:text="item3"
+     		 /> 
+      <Button
+    		 android:id="@+id/checkboxbutton"
+     	     android:layout_width="fill_parent"
+			 android:layout_height="wrap_content" 
+     		 android:text="确定"
+     		 /> 
+</LinearLayout>

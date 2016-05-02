@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/textviewll"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	<TextView android:id="@+id/TextView01" 
+	          android:layout_width="wrap_content" 
+	          android:layout_height="wrap_content"
+	          android:text="在图片下方"
+	          android:textColor="#FF0000"
+	          android:drawableBottom="@drawable/jay"
+	          android:layout_alignParentTop="true"
+	          android:layout_centerHorizontal="true"
+	          >
+	 </TextView>
+  
+	 <TextView android:id="@+id/TextView02" 
+	          android:layout_width="wrap_content" 
+	          android:layout_height="wrap_content"
+	          android:text="在图片上方"
+	          android:textColor="#FF0000"
+	          android:drawableTop="@drawable/jay"
+	          android:layout_alignParentBottom="true"
+	          android:layout_centerHorizontal="true"
+	          >
+	 </TextView> 
+	 <TextView android:id="@+id/TextView03"  
+	          android:layout_width="wrap_content" 
+	          android:layout_height="wrap_content"
+	          android:text="在图片左边"
+	          android:textColor="#FF0000"
+	          android:drawableLeft="@drawable/jay"
+	         android:layout_alignParentLeft="true"
+	          android:layout_centerVertical="true"
+	          >
+	 </TextView>    
+	 <TextView android:id="@+id/TextView04" 
+	          android:layout_width="wrap_content" 
+	          android:layout_height="wrap_content"
+	          android:text="在图片右边"
+	          android:textColor="#FF0000"
+	          android:drawableRight="@drawable/jay"
+	          android:layout_alignParentRight="true"
+	          android:layout_centerVertical="true"
+	          >
+	 </TextView> 
+
+</RelativeLayout >

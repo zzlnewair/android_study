@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+    <EditText  
+  	  android:id="@+id/sample_limit_text0"    
+      android:layout_width="fill_parent"   
+   	  android:layout_height="wrap_content" 
+      android:digits="1234567890.+-*/%\n()"
+      android:hint="限制输入内容：1234567890.+-*/%\n()" 
+      /> 
+    <Button 
+      android:id="@+id/limit_button0"
+      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:text="确定"/>
+    <EditText  
+  	  android:id="@+id/sample_limit_text1"    
+      android:layout_width="fill_parent"   
+   	  android:layout_height="wrap_content" 
+      android:phoneNumber="true"
+      android:hint="限制输入内容：只接受数字" 
+      /> 
+    <Button 
+      android:id="@+id/limit_button1"
+      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:text="确定"/>
+    <EditText  
+  	  android:id="@+id/sample_limit_text2"    
+      android:layout_width="fill_parent"   
+   	  android:layout_height="wrap_content" 
+   	  android:password="true"
+      android:hint="限制输入内容：显示为带*号的密码" 
+      /> 
+    <Button 
+      android:id="@+id/limit_button2"
+      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:text="确定"/>
+    <EditText  
+   	  android:id="@+id/sample_limit_text3"    
+      android:layout_width="fill_parent"   
+      android:layout_height="wrap_content"  
+      android:hint="设置EditText文字颜色"  
+      android:textColorHint="#FF0000"/>  
+    <EditText  
+   	  android:id="@+id/sample_limit_text3"    
+      android:layout_width="fill_parent"   
+      android:layout_height="wrap_content"  
+      android:hint="设置EditText 不可被编辑" 
+      android:enabled="false" 
+      android:textColorHint="#00FF00"/>  
+</LinearLayout>
