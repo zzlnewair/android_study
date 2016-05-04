@@ -1,4 +1,4 @@
-package cn.itcast.launchmode;
+package com.zzl.launchmode;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
     
     public void openSingleIntanceActivity(View v){
     	Intent intent = new Intent();
-    	intent.setClassName("cn.itcast.singleinstance", "cn.itcast.singleinstance.SingleInstanceActivity");
+    	intent.setClassName("com.zzl.singleinstance", "com.zzl.singleinstance.SingleInstanceActivity");
     	startActivity(intent);
     }
     

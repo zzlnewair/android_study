@@ -1,4 +1,4 @@
-package cn.itcast.launchmode;
+package com.zzl.launchmode;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package cn.itcast.launchmode;
+package com.zzl.launchmode;
 
 import android.app.Activity;
 import android.content.Intent;
