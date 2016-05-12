@@ -1,0 +1,12 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.zzl.uicustomviews.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+    </com.zzl.uicustomviews.TitleLayout>
+
+</LinearLayout>
