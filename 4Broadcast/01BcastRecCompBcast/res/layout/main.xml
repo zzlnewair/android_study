@@ -12,5 +12,14 @@
         android:text="@string/broadcast_intent_string" 
         android:textSize="24sp">
     </Button>
+    
+     <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dip"
+        android:text="@string/broadcast_intent_string2" 
+        android:textSize="24sp">
+    </Button>
 
 </LinearLayout>

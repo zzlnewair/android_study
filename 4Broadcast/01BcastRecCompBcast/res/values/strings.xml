@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CompoundBroadcast</string>
-    <string name="broadcast_intent_string">Broadcast Intent button</string>
+    <string name="broadcast_intent_string">Broadcast1 动态</string>
+    <string name="broadcast_intent_string2">Broadcast2 静态</string>
 </resources>
