@@ -1,0 +1,46 @@
+01BcastRecCompBcast 静态广播和动态广播
+
+
+02 02BcastRecCompOrdBcast 有序广播
+
+03 03BcastRecCompOrdBcastWithResRec
+广播返回值
+
+		sendOrderedBroadcast(new Intent(CUSTOM_INTENT), null,
+						new BroadcastReceiver() {
+							@Override
+							public void onReceive(Context context, Intent intent) {
+								Toast.makeText(context,
+										"Final Result is " + getResultData(),
+										Toast.LENGTH_LONG).show();
+							}
+						}, null, 0, null, null);
+						
+	public class Receiver1 extends BroadcastReceiver {
+	
+	private final String TAG = "Receiver1";
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		
+		Log.i(TAG, "INTENT RECEIVED by Receiver1");
+
+		String tmp = getResultData() == null ? "" : getResultData();
+		setResultData(tmp + ":Receiver 1:");
+	}
+
+}
+04BcastRecSinBcastDynReg
+注册单个广播（单例模式）
+singlebroadcast dynamic registration
+	mBroadcastMgr = LocalBroadcastManager
+				.getInstance(getApplicationContext());
+		mBroadcastMgr.registerReceiver(receiver, intentFilter);
+
+	
+
+06BcastRecStickyInt
+
+
+		
+		
