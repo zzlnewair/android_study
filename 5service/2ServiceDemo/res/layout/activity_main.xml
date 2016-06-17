@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/trinea_info_layout" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/start_general_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="start_general_service" />
+
+            <Button
+                android:id="@+id/stop_general_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/start_general_service"
+                android:text="stop_general_service" />
+
+            <Button
+                android:id="@+id/start_intent_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stop_general_service"
+                android:text="start_intent_service" />
+
+            <Button
+                android:id="@+id/bound_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/start_intent_service"
+                android:text="bound_service" />
+
+            <Button
+                android:id="@+id/operate_bound_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bound_service"
+                android:text="operate_bound_service" />
+
+            <Button
+                android:id="@+id/get_bound_service_pro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/operate_bound_service"
+                android:text="get_bound_service_pro" />
+
+            <Button
+                android:id="@+id/unbound_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_bound_service_pro"
+                android:text="unbound_service" />
+
+          
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

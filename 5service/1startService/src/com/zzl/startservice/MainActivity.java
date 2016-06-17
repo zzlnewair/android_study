@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     }
     public void click2(View v){
     	//¹Ø±Õ·þÎñ
-//    	Intent intent = new Intent(this, MyService.class);
+
     	stopService(intent);
     }
     
