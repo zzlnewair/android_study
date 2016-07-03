@@ -6,8 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 
+	// 数据名称，
+	private static final String DBNAME = "test.db";
+	// 数据库版本
+	private static final int version = 1;
+	
 	public DBOpenHelper(Context context) {
-		super(context, "zzl.db", null, 1);//<包>/databases/
+		super(context, DBNAME, null, version);//<包>/databases/
 	}
 
 	@Override
