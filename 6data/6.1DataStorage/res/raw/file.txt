@@ -1,0 +1,6 @@
+﻿从 file.txt 文件中读取数据ing
+姓名：小明
+年龄：25
+性别：男
+喜好：写程序
+邮箱：xiaoming@gmail.com
