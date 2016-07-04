@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
     private final class ItemClickListener implements OnItemClickListener{
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			ListView lView = (ListView)parent;
-			/* ×Ô¶¨ÒåÊÊÅäÆ÷
+			/* è‡ªå®šä¹‰é€‚é…å™¨
 			Person person = (Person) lView.getItemAtPosition(position);
 			Toast.makeText(getApplicationContext(), person.getId().toString(), 1).show();*/
 			
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
     }
     
     
-    //×Ô¶¨ÒåÊÊÅäÆ÷
+    //è‡ªå®šä¹‰é€‚é…å™¨
 	private void show3() {
 		List<Person> persons = personService.getScrollData(0, 20);
 		PersonAdapter adapter = new PersonAdapter(this, persons, R.layout.item);

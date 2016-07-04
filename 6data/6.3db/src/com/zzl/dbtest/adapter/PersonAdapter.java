@@ -13,8 +13,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class PersonAdapter extends BaseAdapter {
-	private List<Person> persons;//在绑定的数据
-	private int resource;//绑定的条目界面
+	private List<Person> persons;
+	private int resource;
 	private LayoutInflater inflater;
 	
 	public PersonAdapter(Context context, List<Person> persons, int resource) {
@@ -25,7 +25,7 @@ public class PersonAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return persons.size();//数据总数
+		return persons.size();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class PersonAdapter extends BaseAdapter {
 		TextView phoneView = null;
 		TextView amountView = null;
 		if(convertView==null){
-			convertView = inflater.inflate(resource, null);//生成条目界面对象
+			convertView = inflater.inflate(resource, null);//锟斤拷锟斤拷锟侥匡拷锟斤拷锟斤拷锟斤拷
 			nameView = (TextView) convertView.findViewById(R.id.name);
 			phoneView = (TextView) convertView.findViewById(R.id.phone);
 			amountView = (TextView) convertView.findViewById(R.id.amount);
@@ -61,7 +61,7 @@ public class PersonAdapter extends BaseAdapter {
 			amountView = cache.amountView;
 		}
 		Person person = persons.get(position);
-		//下面代码实现数据绑定
+		
 		nameView.setText(person.getName());
 		phoneView.setText(person.getPhone());
 		amountView.setText(person.getAmount().toString());

@@ -19,18 +19,18 @@ public class PersonService {
 	
 	public void payment(){
 		SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-		db.beginTransaction();//¿ªÆôÊÂÎñ
+		db.beginTransaction();//å¼€å¯äº‹åŠ¡
 		try{
 			db.execSQL("update person set amount=amount-10 where personid=1");
 			db.execSQL("update person set amount=amount+10 where personid=2");
-			db.setTransactionSuccessful();//ÉèÖÃÊÂÎñµÄ±êÖ¾ÎªTrue
+			db.setTransactionSuccessful();//è®¾ç½®äº‹åŠ¡çš„æ ‡å¿—ä¸ºTrue
 		}finally{
-			db.endTransaction();//½áÊøÊÂÎñ,ÓĞÁ½ÖÖÇé¿ö£ºcommit,rollback,
-		//ÊÂÎñµÄÌá½»»ò»Ø¹öÊÇÓÉÊÂÎñµÄ±êÖ¾¾ö¶¨µÄ,Èç¹ûÊÂÎñµÄ±êÖ¾ÎªTrue£¬ÊÂÎñ¾Í»áÌá½»£¬·ñ²à»Ø¹ö,Ä¬ÈÏÇé¿öÏÂÊÂÎñµÄ±êÖ¾ÎªFalse
+			db.endTransaction();//ç»“æŸäº‹åŠ¡,æœ‰ä¸¤ç§æƒ…å†µï¼šcommit,rollback,
+		//äº‹åŠ¡çš„æäº¤æˆ–å›æ»šæ˜¯ç”±äº‹åŠ¡çš„æ ‡å¿—å†³å®šçš„,å¦‚æœäº‹åŠ¡çš„æ ‡å¿—ä¸ºTrueï¼Œäº‹åŠ¡å°±ä¼šæäº¤ï¼Œå¦ä¾§å›æ»š,é»˜è®¤æƒ…å†µä¸‹äº‹åŠ¡çš„æ ‡å¿—ä¸ºFalse
 		}
 	}
 	/**
-	 * Ìí¼Ó¼ÇÂ¼
+	 * æ·»åŠ è®°å½•
 	 * @param person
 	 */
 	public void save(Person person){
@@ -39,15 +39,15 @@ public class PersonService {
 				new Object[]{person.getName(), person.getPhone(), person.getAmount()});
 	}
 	/**
-	 * É¾³ı¼ÇÂ¼
-	 * @param id ¼ÇÂ¼ID
+	 * åˆ é™¤è®°å½•
+	 * @param id è®°å½•ID
 	 */
 	public void delete(Integer id){
 		SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
 		db.execSQL("delete from person where personid=?", new Object[]{id});
 	}
 	/**
-	 * ¸üĞÂ¼ÇÂ¼
+	 * æ›´æ–°è®°å½•
 	 * @param person
 	 */
 	public void update(Person person){
@@ -56,8 +56,8 @@ public class PersonService {
 				new Object[]{person.getName(), person.getPhone(),  person.getAmount(), person.getId()});
 	}
 	/**
-	 * ²éÑ¯¼ÇÂ¼
-	 * @param id ¼ÇÂ¼ID
+	 * æŸ¥è¯¢è®°å½•
+	 * @param id è®°å½•ID
 	 * @return
 	 */
 	public Person find(Integer id){
@@ -74,9 +74,9 @@ public class PersonService {
 		return null;
 	}
 	/**
-	 * ·ÖÒ³»ñÈ¡¼ÇÂ¼
-	 * @param offset Ìø¹ıÇ°Ãæ¶àÉÙÌõ¼ÇÂ¼
-	 * @param maxResult Ã¿Ò³»ñÈ¡¶àÉÙÌõ¼ÇÂ¼
+	 * åˆ†é¡µè·å–è®°å½•
+	 * @param offset è·³è¿‡å‰é¢å¤šå°‘æ¡è®°å½•
+	 * @param maxResult æ¯é¡µè·å–å¤šå°‘æ¡è®°å½•
 	 * @return
 	 */
 	public List<Person> getScrollData(int offset, int maxResult){
@@ -95,9 +95,9 @@ public class PersonService {
 		return persons;
 	}
 	/**
-	 * ·ÖÒ³»ñÈ¡¼ÇÂ¼
-	 * @param offset Ìø¹ıÇ°Ãæ¶àÉÙÌõ¼ÇÂ¼
-	 * @param maxResult Ã¿Ò³»ñÈ¡¶àÉÙÌõ¼ÇÂ¼
+	 * åˆ†é¡µè·å–è®°å½•
+	 * @param offset è·³è¿‡å‰é¢å¤šå°‘æ¡è®°å½•
+	 * @param maxResult æ¯é¡µè·å–å¤šå°‘æ¡è®°å½•
 	 * @return
 	 */
 	public Cursor getCursorScrollData(int offset, int maxResult){
@@ -108,7 +108,7 @@ public class PersonService {
 	}
 	
 	/**
-	 * »ñÈ¡¼ÇÂ¼×ÜÊı
+	 * è·å–è®°å½•æ€»æ•°
 	 * @return
 	 */
 	public long getCount(){

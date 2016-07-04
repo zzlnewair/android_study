@@ -18,7 +18,7 @@ public class OtherPersonService {
 		this.dbOpenHelper = new DBOpenHelper(context);
 	}
 	/**
-	 * Ìí¼Ó¼ÇÂ¼
+	 * æ·»åŠ è®°å½•
 	 * @param person
 	 */
 	public void save(Person person){
@@ -30,15 +30,15 @@ public class OtherPersonService {
 		db.insert("person", null, values);
 	}
 	/**
-	 * É¾³ı¼ÇÂ¼
-	 * @param id ¼ÇÂ¼ID
+	 * åˆ é™¤è®°å½•
+	 * @param id è®°å½•ID
 	 */
 	public void delete(Integer id){
 		SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
 		db.delete("person", "personid=?", new String[]{id.toString()});
 	}
 	/**
-	 * ¸üĞÂ¼ÇÂ¼
+	 * æ›´æ–°è®°å½•
 	 * @param person
 	 */
 	public void update(Person person){
@@ -50,8 +50,8 @@ public class OtherPersonService {
 		db.update("person", values, "personid=?", new String[]{person.getId().toString()});
 	}
 	/**
-	 * ²éÑ¯¼ÇÂ¼
-	 * @param id ¼ÇÂ¼ID
+	 * æŸ¥è¯¢è®°å½•
+	 * @param id è®°å½•ID
 	 * @return
 	 */
 	public Person find(Integer id){
@@ -69,9 +69,9 @@ public class OtherPersonService {
 		return null;
 	}
 	/**
-	 * ·ÖÒ³»ñÈ¡¼ÇÂ¼
-	 * @param offset Ìø¹ıÇ°Ãæ¶àÉÙÌõ¼ÇÂ¼
-	 * @param maxResult Ã¿Ò³»ñÈ¡¶àÉÙÌõ¼ÇÂ¼
+	 * åˆ†é¡µè·å–è®°å½•
+	 * @param offset è·³è¿‡å‰é¢å¤šå°‘æ¡è®°å½•
+	 * @param maxResult æ¯é¡µè·å–å¤šå°‘æ¡è®°å½•
 	 * @return
 	 */
 	public List<Person> getScrollData(int offset, int maxResult){
@@ -90,7 +90,7 @@ public class OtherPersonService {
 		return persons;
 	}
 	/**
-	 * »ñÈ¡¼ÇÂ¼×ÜÊı
+	 * è·å–è®°å½•æ€»æ•°
 	 * @return
 	 */
 	public long getCount(){
