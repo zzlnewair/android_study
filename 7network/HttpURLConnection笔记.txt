@@ -1,0 +1,146 @@
+
+http://blog.csdn.net/woxueliuyun/article/details/43267365
+详解HttpURLConnection
+
+
+设置连接参数的方法
+setAllowUserInteraction
+setDoInput
+setDoOutput
+setIfModifiedSince
+setUseCaches
+setDefaultAllowUserInteraction
+setDefaultUseCaches
+设置请求头或响应头
+HTTP请求允许一个key带多个用逗号分开的values，但是HttpURLConnection只提供了单个操作的方法：
+
+setRequestProperty(key,value)
+addRequestProperty(key,value)
+setRequestProperty和addRequestProperty的区别就是，setRequestProperty会覆盖已经存在的key的所有values，有清零重新赋值的作用。而addRequestProperty则是在原来key的基础上继续添加其他value。
+
+发送URL请求
+建立实际连接之后，就是发送请求，把请求参数传到服务器，这就需要使用outputStream把请求参数传给服务器：
+
+getOutputStream 
+获取响应
+请求发送成功之后，即可获取响应的状态码，如果成功既可以读取响应中的数据，获取这些数据的方法包括：
+
+getContent
+getHeaderField
+getInputStream 
+对于大部分请求来说，getInputStream和getContent是用的最多的。
+
+相应的信息头用以下方法获取：
+
+getContentEncoding
+getContentLength
+getContentType
+getDate
+getExpiration
+getLastModifed 
+HttpURLConnection
+任何网络连接都需要经过socket才能连接，HttpURLConnection不需要设置socket，所以，HttpURLConnection并不是底层的连接，而是在底层连接上的一个请求。这就是为什么HttpURLConneciton只是一个抽象类，自身不能被实例化的原因。HttpURLConnection只能通过URL.openConnection()方法创建具体的实例。
+
+虽然底层的网络连接可以被多个HttpURLConnection实例共享，但每一个HttpURLConnection实例只能发送一个请求。请求结束之后，应该调用HttpURLConnection实例的InputStream或OutputStream的close()方法以释放请求的网络资源，不过这种方式对于持久化连接没用。对于持久化连接，得用disconnect()方法关闭底层连接的socket。
+
+创建HttpURLConnection
+
+[java] view plain copy
+URL url = new URL("http://localhost:8080/xxx.do");    
+     
+URLConnection rulConnection = url.openConnection();// 此处的urlConnection对象实际上是根据URL的    
+// 请求协议(此处是http)生成的URLConnection类    
+// 的子类HttpURLConnection,故此处最好将其转化    
+// 为HttpURLConnection类型的对象,以便用到    
+// HttpURLConnection更多的API.如下:    
+     
+HttpURLConnection httpUrlConnection = (HttpURLConnection) rulConnection;    
+设置HttpURLConnection参数
+
+[java] view plain copy
+// 设定请求的方法为"POST"，默认是GET    
+httpUrlConnection.setRequestMethod("POST");    
+    
+// 设置是否向httpUrlConnection输出，因为这个是post请求，参数要放在    
+// http正文内，因此需要设为true, 默认情况下是false;    
+httpUrlConnection.setDoOutput(true);    
+     
+// 设置是否从httpUrlConnection读入，默认情况下是true;    
+httpUrlConnection.setDoInput(true);    
+     
+// Post 请求不能使用缓存    
+httpUrlConnection.setUseCaches(false);    
+     
+// 设定传送的内容类型是可序列化的java对象    
+// (如果不设此项,在传送序列化对象时,当WEB服务默认的不是这种类型时可能抛java.io.EOFException)    
+httpUrlConnection.setRequestProperty("Content-type", "application/x-java-serialized-object");    
+   
+// 连接，从上述url.openConnection()至此的配置必须要在connect之前完成，    
+httpUrlConnection.connect();    
+URLConnection建立连接
+
+[java] view plain copy
+// 此处getOutputStream会隐含的进行connect(即：如同调用上面的connect()方法，    
+// 所以在开发中不调用上述的connect()也可以)。    
+OutputStream outStrm = httpUrlConnection.getOutputStream();    
+[java] view plain copy
+<p>getInputStream()也是同理。</p>  
+HttpURLConnection发送请求
+
+[java] view plain copy
+// 现在通过输出流对象构建对象输出流对象，以实现输出可序列化的对象。    
+ObjectOutputStream objOutputStrm = new ObjectOutputStream(outStrm);    
+     
+// 向对象输出流写出数据，这些数据将存到内存缓冲区中    
+objOutputStrm.writeObject(new String("我是测试数据"));    
+     
+// 刷新对象输出流，将任何字节都写入潜在的流中（些处为ObjectOutputStream）    
+objOutputStm.flush();    
+    
+// 关闭流对象。此时，不能再向对象输出流写入任何数据，先前写入的数据存在于内存缓冲区中,    
+// 在调用下边的getInputStream()函数时才把准备好的http请求正式发送到服务器    
+objOutputStm.close();    
+HttpURLConneciton获取响应
+ // 调用HttpURLConnection连接对象的getInputStream()函数,  
+
+InputStream inStrm = httpConn.getInputStream(); 
+
+设置POST参数
+
+[java] view plain copy
+OutputStream os = httpConn.getOutputStream();    
+             String param = new String();    
+             param = "CorpID=" + CorpID +    
+                     "&LoginName=" + LoginName+    
+                     "&send_no=" + phoneNumber +    
+                     "&msg=" + java.net.URLEncoder.encode(msg,"GBK"); ;    
+             os.write(param.getBytes());    
+超时设置，防止 网络异常的情况下，可能会导致程序僵死而不继续往下执行
+
+System.setProperty("sun.net.client.defaultConnectTimeout", "30000");  
+
+System.setProperty("sun.net.client.defaultReadTimeout", "30000");  
+
+ 
+
+其中： sun.net.client.defaultConnectTimeout：连接主机的超时时间（单位：毫秒）  
+
+sun.net.client.defaultReadTimeout：从主机读取数据的超时时间（单位：毫秒）  
+
+  
+
+JDK 1.5以前的版本，只能通过设置这两个系统属性来控制网络超时。在1.5中，还可以使用HttpURLConnection的父类URLConnection的以下两个方法：  
+
+setConnectTimeout：设置连接主机超时（单位：毫秒）  
+
+setReadTimeout：设置从主机读取数据超时（单位：毫秒）  
+
+  
+
+例如：  
+
+HttpURLConnection urlCon = (HttpURLConnection)url.openConnection();  
+
+urlCon.setConnectTimeout(30000);  
+
+urlCon.setReadTimeout(30000);  
