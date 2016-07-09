@@ -16,11 +16,7 @@ import com.zzl.dnetworkimageloader.R;
 import com.zzl.utils.ImageLoader;
 import com.zzl.utils.ImageLoader.Type;
 import com.zzl.utils.Images;
-/**
- * http://blog.csdn.net/lmj623565791/article/details/41874561
- * @author zhy
- *
- */
+
 public class ListImgsFragment extends Fragment
 {
 	private GridView mGridView;

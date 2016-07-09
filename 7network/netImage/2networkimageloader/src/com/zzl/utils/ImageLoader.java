@@ -25,8 +25,7 @@ import com.zzl.utils.ImageSizeUtil.ImageSize;
 
 /**
  * 图片加载类
- * http://blog.csdn.net/lmj623565791/article/details/41874561
- * @author zhy
+
  * 
  */
 @SuppressLint("NewApi")

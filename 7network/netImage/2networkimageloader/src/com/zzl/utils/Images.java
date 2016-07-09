@@ -88,5 +88,10 @@ public class Images
 			"http://img.my.csdn.net/uploads/201407/26/1406382767_4772.jpg",
 			"http://img.my.csdn.net/uploads/201407/26/1406382766_4924.jpg",
 			"http://img.my.csdn.net/uploads/201407/26/1406382766_5762.jpg",
-			"http://img.my.csdn.net/uploads/201407/26/1406382765_7341.jpg" };
+			"http://img.my.csdn.net/uploads/201407/26/1406382765_7341.jpg",
+			"http://img5.imgtn.bdimg.com/it/u=1214100453,2355496718&fm=21&gp=0.jpg",
+			"http://pic16.nipic.com/20110916/7675135_171528663000_2.jpg",
+			
+	
+	};
 }
