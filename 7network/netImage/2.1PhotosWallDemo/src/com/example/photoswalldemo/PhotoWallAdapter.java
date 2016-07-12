@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,8 @@ import android.widget.ImageView;
  * @author guolin
  */
 public class PhotoWallAdapter extends ArrayAdapter<String> {
+
+	private static final String TAG = "PhotoWallAdapter";
 
 	/**
 	 * 记录所有正在下载或等待下载的任务。
@@ -84,6 +87,7 @@ public class PhotoWallAdapter extends ArrayAdapter<String> {
 			if (!cacheDir.exists()) {
 				cacheDir.mkdirs();
 			}
+			Log.d(TAG,"cacheDir=="+cacheDir.getAbsolutePath());
 			// 创建DiskLruCache实例，初始化缓存数据
 			mDiskLruCache = DiskLruCache
 					.open(cacheDir, getAppVersion(context), 1, 10 * 1024 * 1024);
@@ -106,6 +110,7 @@ public class PhotoWallAdapter extends ArrayAdapter<String> {
 			imageView.getLayoutParams().height = mItemHeight;
 		}
 		// 给ImageView设置一个Tag，保证异步加载图片时不会乱序
+		Log.d(TAG,"url==="+url);
 		imageView.setTag(url);
 		imageView.setImageResource(R.drawable.empty_photo);
 		loadBitmaps(imageView, url);
