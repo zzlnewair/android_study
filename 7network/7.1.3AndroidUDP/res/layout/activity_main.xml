@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"   
+    android:layout_height="match_parent"   
+    android:orientation="vertical" >   
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1">
+	<TableRow>
+		<TextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="SendIP："/>
+		<EditText   
+    		android:id="@+id/edtSendIP"   
+   			android:layout_width="wrap_content"   
+   			android:layout_height="wrap_content" 
+    		android:text="127.0.0.1"/>  
+	</TableRow>
+	<TableRow>
+		<TextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="SendPort："/>    
+		<EditText   
+    		android:id="@+id/edtSendPort"   
+    		android:layout_width="wrap_content"   
+    		android:layout_height="wrap_content" 
+    		android:text="5188"/>    
+	</TableRow>
+	<TableRow>
+		<TextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="SendInfo："/>       
+		<EditText   
+    		android:id="@+id/edtSendInfo"   
+    		android:layout_width="wrap_content"   
+    		android:layout_height="wrap_content" 
+    		android:text="Hello Android's UDP"/>  
+	</TableRow>
+</TableLayout>
+<CheckBox 
+    android:id="@+id/chkSendHex"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="16进制发送"/>
+<Button
+    android:id="@+id/btnSend"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="    发送    "
+    android:onClick="SendButtonClick"
+    android:layout_gravity="center"/>
+<TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="--上面为UDP发送部分--下面为UDP接收部分---------------"/>
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1">
+	<TableRow >
+		<TextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="ReceivePort："/>    
+		<EditText   
+    		android:id="@+id/edtReceivePort"   
+    		android:layout_width="wrap_content"   
+    		android:layout_height="wrap_content" 
+    		android:text="5188"/>   
+	</TableRow>
+	<TableRow>
+		<TextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="ReceiveInfo："/>       
+		<EditText   
+    		android:id="@+id/edtReceiveInfo"   
+    		android:layout_width="wrap_content"   
+    		android:layout_height="wrap_content" 
+    		android:text=""/>  
+	</TableRow>
+</TableLayout>
+<CheckBox 
+    android:id="@+id/chkReceiveHex"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="16进制接收"/>
+<Button
+   	android:id="@+id/btnListen"
+   	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="开始监听"
+    android:layout_gravity="center"
+    android:onClick="ListenButtonClick"/>  
+</LinearLayout>
