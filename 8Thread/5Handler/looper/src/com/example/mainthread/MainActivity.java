@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 			public void handleMessage(Message msg) {
 				// TODO Auto-generated method stub
 				super.handleMessage(msg);
-				 Log.i(TAG, "Got an incoming message from the child thread - "
+				 Log.i(TAG, "5 mMainHandler--Got an incoming message from the child thread - "
 	                        + (String) msg.obj);
 	                
 	                info.setText((String) msg.obj);
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 	                    childMsg.obj = mMainHandler.getLooper().getThread().getName() + "says Hello";
 	                    mChildHandler.sendMessage(childMsg);
 	                     
-	                    Log.i(TAG, "Send a message to the child thread - " + (String)childMsg.obj);
+	                    Log.i(TAG, "1--msgBtn Send a message to the child thread - " + (String)childMsg.obj);
 	 
 	 
 	                }
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 	            mChildHandler = new Handler() {
 	                @Override
 	                public void handleMessage(Message msg) {
-	                     Log.i(CHILD_TAG, "Got an incoming message from the main thread - " + (String)msg.obj);
+	                     Log.i(CHILD_TAG, "2--mChildHandler Got an incoming message from the main thread - " + (String)msg.obj);
 	 
 	 
 	                    try {
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 	 
 	                        mMainHandler.sendMessage(toMain);
 	 
-	                        Log.i(CHILD_TAG, "Send a message to the main thread - " + (String)toMain.obj);
+	                        Log.i(CHILD_TAG, "3 Send a message to the main thread - " + (String)toMain.obj);
 	 
 	                    } catch (InterruptedException e) {
 	                        // TODO Auto-generated catch block
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
 	 
 	            };
 	 
-	            Log.d(CHILD_TAG, "Child handler is bound to - "+ mChildHandler.getLooper().getThread().getName());
+	            Log.d(CHILD_TAG, "4 Child handler is bound to - "+ mChildHandler.getLooper().getThread().getName());
 	 
 	           
 	            Looper.loop();
