@@ -2,7 +2,7 @@ package com.test.tabactivity;
 
 /**
  * @author yangyu
- *	功能描述：常量工具类
+ *	鍔熻兘鎻忚堪锛氬父閲忓伐鍏风被
  */
 public class Constant {
 
@@ -10,7 +10,7 @@ public class Constant {
 	public static final class ConValue{
 		
 		/**
-		 * Tab选项卡的图标
+		 * Tab閫夐」鍗＄殑鍥炬爣
 		 */
 		public static int   mImageViewArray[] = {R.drawable.tab_icon1,
 											     R.drawable.tab_icon2,
@@ -19,13 +19,13 @@ public class Constant {
 											     R.drawable.tab_icon5};
 
 		/**
-		 * Tab选项卡的文字
+		 * Tab閫夐」鍗＄殑鏂囧瓧
 		 */
-		public static String mTextviewArray[] = {"主页", "关于", "设置", "搜索", "更多"};
+		public static String mTextviewArray[] = {"涓婚〉", "鍏充簬", "璁剧疆", "鎼滅储", "鏇村"};
 		
 		
 		/**
-		 * 每一个Tab界面
+		 * 姣忎竴涓猅ab鐣岄潰
 		 */
 		public static Class mTabClassArray[]= {Activity1.class,
 											   Activity2.class,
