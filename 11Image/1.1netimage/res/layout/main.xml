@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/imagepath"
+    />
+    
+    <EditText
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="http://photo.enterdesk.com/2011-9-8/enterdesk.com-54504CEDE49E00A170937E6DC130C259.jpg"
+    android:id="@+id/imagepath"
+    />
+   <LinearLayout
+   
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:orientation="horizontal"
+    >
+       
+      <Button
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="@string/button"
+    android:id="@+id/btndisplay"
+    />
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:text="缩放320*240"
+    android:id="@+id/btn2"
+    />  
+   
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="放大全屏"
+    android:id="@+id/btn3"
+    />   
+     
+   </LinearLayout>
+   <LinearLayout 
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+       
+       >
+    <ImageView
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:id="@+id/imageView"
+    />
+    
+    </LinearLayout>
+</LinearLayout>
