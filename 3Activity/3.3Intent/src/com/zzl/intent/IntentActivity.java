@@ -21,7 +21,7 @@ public class IntentActivity extends Activity {
     	Intent intent = new Intent();//隐式意图激活Activity
     	intent.setAction("com.zzl.zhangxx");
     	intent.addCategory("com.zzl.category.java");   
-    	intent.setDataAndType(Uri.parse("itcast://www.itcast.cn/liming"), "image/jpeg");
+    	intent.setDataAndType(Uri.parse("baidu://www.baidu.com"), "image/jpeg");
     	
     	startActivity(intent);//方法内部为Intent添加了android.intent.category.DEFAULT类别
     }
