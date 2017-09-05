@@ -1,0 +1,273 @@
+Picasso.with(context)
+  .load(url)
+  .resize(50, 50)
+  .centerCrop()
+  .into(imageView);
+  
+  
+  Picasso.with(context)
+    .load(url)
+    .placeholder(R.drawable.user_placeholder)
+    .error(R.drawable.user_placeholder_error)
+.into(imageView);
+
+
+除了加载网络图片picasso还支持加载Resources, assets, files, content providers中的资源文件。
+
+Picasso.with(context).load(R.drawable.landing_screen).into(imageView1);
+Picasso.with(context).load(new File(...)).into(imageView2);
+
+
+调用.noFade()
+
+Picasso的默认图片加载方式有一个淡入的效果,
+如果调用了noFade(),加载的图片将直接显示在ImageView上
+
+
+调用.noPlaceholder()
+
+有一个场景,当你从网上加载了一张图片到Imageview上,过了一段时间,
+想在同一个ImageView上展示另一张图片,这个时候你就会去调用Picasso,进行二次请求,这时Picasso就会把之前的图片进行清除,可能展示的是.placeholder()的图片,给用户并不是很好的体验,
+如果调用了noPlaceholder(),就不会出现这种情况.
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .placeholder(R.mipmap.ic_launcher)  
+    .into(imageViewNoPlaceholder, new Callback() {
+        @Override
+        public void onSuccess() {
+            // 当上次加载完成后,进行二次加载
+            Picasso
+                .with(context)
+               .load(UsageExampleListViewAdapter.eatFoodyImages[1])
+               .noPlaceholder() 
+               .into(imageViewNoPlaceholder);
+        }
+
+        @Override
+        public void onError() {
+
+        }
+    });
+	
+	
+	
+	
+	调用resize(x, y)来自定义图片的加载大小
+
+如果图片很大或者想自定义图片的显示样式,可以调用该API来解决这个问题;
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .resize(6000, 2000)
+    .onlyScaleDown() // 如果图片规格大于6000*2000,将只会被resize
+    .into(imageViewResizeScaleDown);
+	
+调用onlyScaleDown()来缩短图片的加载计算时间
+
+如果我们调用了resize(x,y)方法的话,Picasso一般会重新计算以改变图片的加载质量,比如一张小图变成一张大图进行展示的时候,但是如果我们的原图是比我们从新resize的新图规格大的时候,我们就可以调用onlyScaleDown()来直接进行展示而不再重新计算.
+
+
+
+对拉伸图片的处理
+
+如果图片被操作了,可能在展示的时候就会比较丑,我们是想改变这种情景的,Picasso给我们提供了两种选择进行图片展示,centerCrop() 或者 centerInside().
+
+centerCrop() - 图片会被剪切,但是图片质量看着没有什么区别
+
+Inside()- 图片会被完整的展示,可能图片不会填充满ImageView`,也有可能会被拉伸或者挤压
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .resize(600, 200)
+    .centerInside() 或者调用 .centerCrop()
+    .into(imageViewResizeCenterInside);
+
+调用.fit()来智能展示图片
+
+如果调用了该API, Picasso会对图片的大小及ImageView进行测量,计算出最佳的大小及最佳的图片质量来进行图片展示,减少内存,并对视图没有影响;
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .fit()
+    .into(imageViewHero);
+
+
+调用.priority()设置图片加载的优先级
+
+如果一个屏幕上顶部图片较大,而底部图片较小,因为Picasso是异步加载,所以小图会先加载出来,但是对于用户来说,更希望看到的是上面的图片先加载,底部的图片后加载,Picasso支持设置优先级,分为HIGH, MEDIUM, 和 LOW,所有的加载默认优先级为MEDIUM;
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .fit()
+    .priority(Picasso.Priority.HIGH)
+    .into(imageViewHero);
+
+注意:设置优先级并不能保证图片就一定会被优先加载,只是会偏向倾斜于先加载;
+
+调用tag()为请求添加标记提升用户体验
+
+我们都知道,在一个ListView的子item中加载一张图片是很常见的,
+这些图片都来源于网络请求,如果这个listview有上千条数据,
+当用户快速滑动的时候,每个item会不断的被复用
+,当然Picasso的请求也不断地进行请求,取消请求,再次请求,
+再次取消的操作(对屏幕外的自动取消请求),
+但是如果有一个方案,可以在用户在快速滑动的时候全部停止请求,
+只有在滑动停止时再去请求,就非常完美了;
+
+Picasso提供了三种设置Tag的方式
+
+暂停标记 pauseTag()
+可见标记 resumeTag()
+取消标记 cancleTag()
+pauseTag() 和 resumeTag()的用法
+
+在图片请求时添加标记
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+    .tag("Profile ListView") //参数为 Object
+    .into(imageViewWithTag);
+
+然后让listview实现滑动监听
+
+@Override
+  public void onScrollStateChanged(AbsListView view, int scrollState) {
+    final Picasso picasso = Picasso.with(context);
+
+    if (scrollState == SCROLL_STATE_IDLE || scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+          picasso.resumeTag("Profile ListView");
+    } else {
+          picasso.pauseTag("Profile ListView");
+    }
+  }
+1
+
+cancleTag()的使用场景
+
+试想一下,当你在浏览购物车的时候,这个时候就会去展示所有被选中item的图片资源,
+如果这个时候用户点击了购买按钮,就会弹出一个progressdialog去请求数据以进行页面跳转,
+这个时候原来的请求就需要取消掉了;
+
+public void buyButtonClick(View v) {
+     showDiaolg();
+
+    // 取消网络请求
+    Picasso
+        .with(context)
+        .cancelTag("ShoppingCart");
+}
+
+注意:如果tag状态为pause或者resume的话,Picasso会对tag持有一个引用,
+如果此时用户退出了当前Activity,垃圾回收机制进行回收的时候,就会出现内存泄露,
+所以需要在onDestory()方法中进行相应处理;
+
+.fetch() , .get() 及 Target之间的区别
+
+.fetch() - 该方法会在后台异步加载一张图片,但是不会展示在ImageView上,也不会返回Bitmap,这个方法只是为了将获取到的资源加载到本地和内存中,为了后期加载缩短时间;
+.get() - 该方法也是一个异步线程,不过加载完成后会返回一个Bitmap,但是需要注意,该方法不能在主线程中调用,因为会造成线程阻塞;
+Target - 我们之前调用.into()方法,只是将获取到的资源加载到ImageView中,但我们还可以将资源作为回调放到Target中,上代码:
+private Target target = new Target() {
+    @Override
+    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+        //加载成功后会得到一个bitmap,可以自定义操作
+    }
+
+    @Override
+    public void onBitmapFailed(Drawable errorDrawable) {
+        // 加载失败进行相应处理
+    }
+
+    @Override
+    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+    }
+};
+
+Picasso
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[0])
+	
+	
+	
+	
+	关于缓存机制
+
+Picasso默认的缓存分配大小特点:
+
+LRU缓存占应用程序可用内存的15%
+本地缓存占到硬盘空间的2%但不超过50M并且不小于5M(前提是这种情况只在4.0以上有效果,或者你能像OKHttp那样提供一个本地缓存库来支持全平台)
+Picasso默认开启3个线程来进行本地与网络之间的访问
+Picasso加载图片顺序, 内存–>本地–>网络
+Memory Policy
+
+可能有的时候你不想让Picasso去内存中进行读取而跳过此步骤,这时你可以在进行网络请求时调用memoryPolicy(MemoryPolicy policy, MemoryPolicy... additional),MemoryPolicy是一个枚举,只有两个值 NO_CACHE 和 ‘NO_STORE`
+
+NO_CACHE - 让Picasso跳过从内存中读取图片这一操作
+
+NO_STORE - 如果你的图片只加载一次就没用了,就调用该值,这样的话Picasso就不会在内存及本地进行缓存了
+
+代码示例:
+
+Picasso  
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[1])
+    .memoryPolicy(MemoryPolicy.NO_CACHE)
+    .into(imageViewFromDisk);
+
+当然,你也可以这样调用:
+
+Picasso  
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[1])
+    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+    .into(imageViewFromDisk);
+
+注意:调用.memoryPolicy(MemoryPolicy.NO_CACHE)虽然能避免Picasso从内存中读取资源,但是并不能避免从本地读取资源,如果你也想跳过从本地读取这一过程,请看NetworkPolicy.
+
+NetworkPolicy
+
+就像MemoryPolicy负责管理内存缓存一样,NetworkPolicy就是负责管理本地缓存的,而且二者的用法一模一样,NetworkPolicy也是一个枚举,不过它有三个值:
+
+NO_CACHE - 让Picasso跳过从本地读取资源这一过程
+NO_STORE - 让Picasso不进行本地图片缓存
+OFFLINE - 让Picasso加载图片的时候只从本地读取除非联网正常并且本地找不到资源的情况下
+示例代码:
+
+Picasso  
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[2])
+    .networkPolicy(NetworkPolicy.NO_CACHE)
+    .into(imageViewFromNetwork);
+
+当然,你也可以配合MemoryPolicy一起使用
+
+Picasso  
+    .with(context)
+    .load(UsageExampleListViewAdapter.eatFoodyImages[2])
+    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+    .networkPolicy(NetworkPolicy.NO_CACHE)
+    .into(imageViewFromNetwork); 
+
+查看图片都来源于何处,缓存指示器
+
+作为一个有经验的猿猿,我们肯定想知道我们所加载的图片来源于何处,是内存,本地还是从网络加载的,
+当然这个动作Picasso已经为我们想好了,我们只需要在请求的时候调用.
+setIndicatorsEnabled(true);就行了,代码:
+
+Picasso  
+    .with(context)
+    .setIndicatorsEnabled(true);
+
+这样每张图片在显示的时候,左上角都会有一个小标记,分别又三种三色,蓝色,绿色,红色;
+
+蓝色 - 从内存中获取,是最佳性能展示
+绿色 - 从本地获取,性能一般
+红色 - 从网络加载,性能最差
+
+
